@@ -32,13 +32,23 @@ export function PollDisplay(){
 
 export default function UserParti(){
 
-    // const [votes, setVotes] = useState({
+    const navigate = useNavigate()
 
-    // })
-
+    const [votes, setVotes] = useState(0)
+    const [votes2, setVotes2] = useState(0)
+    const [votes3, setVotes3] = useState(0)
+    const [votes4, setVotes4] = useState(0)
+    
     function voteClick(choiceId) {
-        // setVotes(data.choices[choiceId] + 1);
-        // console.log(votes)
+        if(choiceId==1){
+            setVotes(votes+1)
+        }else if(choiceId==2){
+            setVotes2(votes2+1)
+        }else if(choiceId==3){
+            setVotes2(votes3+1)
+        }else if(choiceId==4){
+            setVotes2(votes4+1)
+        }
     }
 
 
@@ -51,10 +61,21 @@ export default function UserParti(){
         </li>
         </div>})}
 
-        <button>Submit</button>
+        <button onClick={()=>{navigate('/thankyou')}}>Submit</button>
         
     </form>
     </>)
 
 
+}
+
+export function ThankYouCom(){
+
+    const navigate = useNavigate()
+
+    return <>
+    <h1>Thank You for Submission</h1>
+    <div>Question: {data.question}</div>
+    {data.choices.map((data2)=> <li key={data2.id}>{data2.label} : Total Votes till {data2.votes}</li>)}
+    </>
 }
